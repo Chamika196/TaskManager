@@ -1,30 +1,55 @@
-# Introducing Task Manager: Your Productivity Powerhouse
+# Task Manager Application
 
-**Task Manager** is a web application that helps you conquer your to-do list and achieve your goals with ease. It's like having a personal assistant in your pocket, but without the coffee breath (or the judgmental stares).
+Task Manager is a web application that enables users to manage tasks efficiently. The application is divided into a backend API built with .NET and a frontend client built with Angular.
 
-## Key Features:
+## Backend (.NET) Requirements:
 
-- **Effortless Task Management:** Create, update, and delete tasks with a simple and intuitive interface. No more messy spreadsheets or paper clutter!
-- **Seamless Organization:** Keep your workflow organized with categories, priorities, and deadlines. See everything you need to do at a glance.
-- **Powerful Collaboration:** Work together with your team on shared tasks and projects. Stay in sync and achieve milestones quicker.
-- **Customization Options:** Personalize your experience with themes, reminders, and notification settings. Make Task Manager work for you!
-- **Rock-Solid Security:** Rest assured that your data is safe and secure with industry-leading encryption and data protection measures.
+1. Create a .NET Web API project with the following endpoints:
+   - `GET /api/tasks`: Retrieves a list of all tasks.
+   - `POST /api/tasks`: Creates a new task.
+   - `PUT /api/tasks/{id}`: Updates an existing task.
+   - `DELETE /api/tasks/{id}`: Deletes a task.
 
-## Beyond Basic To-Dos:
+2. Define a Task model with the following properties:
+   - `Id (int)`: Unique identifier for the task.
+   - `Title (string)`: Title of the task.
+   - `Description (string)`: Description of the task.
+   - `DueDate (DateTime)`: Due date of the task.
 
-Task Manager goes beyond just checking off boxes. It offers advanced features to boost your productivity and keep you motivated:
+3. Create a dummy database to run sample data.
 
-- **Prioritization:** Focus on what matters most by marking tasks as important, urgent, or less critical.
-- **Deadlines:** Set deadlines for each task and receive timely reminders to stay on track.
-- **Subtasks:** Break down complex projects into smaller, manageable steps for smoother progress.
-- **Progress Tracking:** Monitor your progress and celebrate completed tasks to stay motivated and inspired.
+## Frontend (Angular) Requirements:
 
-## Built with You in Mind:
+1. Create an Angular project using the Angular CLI.
 
-Task Manager is crafted with cutting-edge technologies and best practices in mind:
+2. Create the following components:
+   - `TaskListComponent`: Displays a list of tasks.
+   - `TaskFormComponent`: Provides a form for creating and updating tasks.
 
-- **Responsive Design:** Access your tasks from any device, anywhere, and enjoy a seamless experience.
-- **Reliable Performance:** Built on robust backend infrastructure, Task Manager delivers smooth and responsive performance.
-- **Security You Can Trust:** Focus on your goals, knowing your data is secure with best-in-class protection measures.
+3. Implement the following features in the components:
+   - **TaskListComponent:**
+     - Fetches the list of tasks from the backend API and displays them in a table.
+     - Provides buttons or links to delete tasks.
+     - Allows users to click on a task to navigate to the task details page.
+   - **TaskFormComponent:**
+     - Provides a form with input fields for the task title, description, and due date.
+     - Validates the form inputs and displays error messages if necessary.
+     - Handles form submission to create or update tasks.
 
-Ready to unleash your productivity potential? **Sign up for Task Manager today and experience the power of organized workflow!**
+4. Use Angular routing to navigate between different pages or components (e.g., task list, task details, task form).
+
+5. Apply basic styling to make the application visually appealing.
+
+## Additional Requirements:
+
+1. Ensure proper error handling and display meaningful error messages to users when API requests fail or encounter validation errors.
+
+2. Implement appropriate input validation on the backend API to validate task properties.
+
+3. Use appropriate HTTP methods (GET, POST, PUT, DELETE) for the corresponding API endpoints.
+
+4. Use reactive forms in Angular for handling form inputs and validation.
+
+5. Follow best practices for code organization, readability, and maintainability.
+
+Feel free to enhance this document with additional information specific to your implementation or deployment instructions.

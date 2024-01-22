@@ -1,0 +1,52 @@
+<div class="container">
+    <h1 class="mt-3">Edit Task</h1>
+  
+    <ng-container *ngIf="model; else notFound">
+      <form [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
+        <div class="mt-2">
+          <div class="mt-3">
+            <label for="taskId">Task Id</label>
+            <input type="text" disabled id="taskId" class="form-control" name="taskId" [value]="model.id">
+          </div>
+          <div class="mt-3">
+            <label class="form-label" for="taskName">Task</label>
+            <input type="text" id="taskName" class="form-control" name="taskName" formControlName="title">
+            
+            <!-- Display validation error for the title field -->
+            <div *ngIf="taskForm.get('title')?.hasError('required') && (taskForm.get('title')?.dirty || taskForm.get('title')?.touched)" class="text-danger">
+              Task is required.
+            </div>
+          </div>
+          <div class="mt-3">
+            <label class="form-label" for="taskDescription">Task Description</label>
+            <input type="text" id="taskDescription" class="form-control" name="taskDescription" formControlName="description">
+            
+            <!-- Display validation error for the description field -->
+            <div *ngIf="taskForm.get('description')?.hasError('required') && (taskForm.get('description')?.dirty || taskForm.get('description')?.touched)" class="text-danger">
+              Description is required.
+            </div>
+          </div>
+          <div class="mt-3">
+            <label class="form-label" for="taskDuedate">Task Due Date</label>
+            <input type="date" id="taskDuedate" class="form-control" name="taskDuedate" formControlName="dueDate">
+            <!-- <p>{{ model.dueDate | date:'yyyy-MM-dd' }}</p> -->
+            <div *ngIf="taskForm.get('dueDate')?.hasError('required') && (taskForm.get('dueDate')?.dirty || taskForm.get('dueDate')?.touched)" class="text-danger"
+       dateInputFormat= 'DD-MM-YYYY'>
+              Due Date is required.
+            </div>
+          </div>
+          <div class="mt-3 d-flex">
+            <button class="btn btn-primary" type="submit" [disabled]="!taskForm.valid">Submit</button>
+            <button class="btn btn-danger ms-3" type="button" (click)="onDelete()">Delete</button>
+          </div>
+        </div>
+      </form>
+    </ng-container>
+  
+    <ng-template #notFound>
+      <div class="alert alert-warning" role="alert">
+        Task not found!
+      </div>
+    </ng-template>
+  </div>
+  
